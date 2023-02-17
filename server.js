@@ -11,6 +11,10 @@ app.use(express.json());
 
 app.use(morgan("dev"));
 
+const newUser = require("./controllers/users/newUser");
+
+app.post("/users", newUser);
+
 // Middleware gestion de errores.
 app.use((err, req, res, next) => {
   console.error(err);
