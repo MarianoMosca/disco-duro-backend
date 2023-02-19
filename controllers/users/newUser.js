@@ -1,17 +1,17 @@
 "use strict";
 const insertUserQuery = require("../../db/queries/users/insertUserQuery");
 
+const { generateError } = require("../../helpers");
+
 const newUser = async (req, res, next) => {
   try {
-    const { email, password } = req.body;
+    const { name, email, password } = req.body;
 
-    if (!email || !password) {
-      const err = new Error("Faltan campos");
-      err.httpStatus = 400;
-      throw err;
+    if (!name || !email || !password) {
+      generateError("Faltan campos", 400);
     }
 
-    await insertUserQuery(email, password);
+    await insertUserQuery(name, email, password);
 
     res.send({
       status: "ok",
