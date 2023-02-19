@@ -1,4 +1,4 @@
-const selectUserByEmail = require("../../db/queries/users/selectUserByEmail");
+const selectUserByEmail = require("../../db/queries/selectUserByEmail");
 const { generateError } = require("../../helpers");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");

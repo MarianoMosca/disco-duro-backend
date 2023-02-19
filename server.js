@@ -13,10 +13,10 @@ app.use(morgan("dev"));
 
 // Controladores.
 
-const { newUser } = require("./controllers/newUser");
+const { newUser, loginUser } = require("./controllers/users");
 
 app.post("/users", newUser);
-
+app.post("users/login", loginUser);
 // Middleware gestion de errores.
 app.use((err, req, res, next) => {
   console.error(err);
