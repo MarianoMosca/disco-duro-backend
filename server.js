@@ -13,13 +13,17 @@ app.use(express.json());
 
 app.use(morgan("dev"));
 
+// Middleware personalizados.
+
+const isAuth = require("./middlewares/isAuth");
+
 // Controladores.
 
 const { newUser, loginUser, getOwnUser } = require("./controllers/users");
 
 app.post("/users", newUser);
 app.post("/users/login", loginUser);
-app.get("/users", getOwnUser);
+app.get("/users", isAuth, getOwnUser);
 // Middleware gestion de errores.
 app.use((err, req, res, next) => {
   console.error(err);
