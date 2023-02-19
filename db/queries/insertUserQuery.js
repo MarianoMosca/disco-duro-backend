@@ -1,3 +1,5 @@
+"use strict";
+
 const getDB = require("../getDB");
 
 const bcrypt = require("bcrypt");

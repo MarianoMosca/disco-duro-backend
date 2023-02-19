@@ -1,7 +1,9 @@
+"use strict";
+
 const { generateError } = require("../../helpers");
 const getDB = require("../getDB");
 
-const selectUserByEmail = async (email) => {
+const selectUserByEmailQuery = async (email) => {
   let connection;
 
   try {
@@ -24,4 +26,4 @@ const selectUserByEmail = async (email) => {
   }
 };
 
-module.exports = selectUserByEmail;
+module.exports = selectUserByEmailQuery;

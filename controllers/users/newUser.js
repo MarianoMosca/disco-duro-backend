@@ -1,4 +1,6 @@
-const insertUserQuery = require("../../db/queries/insertNewUser");
+"use strict";
+
+const insertUserQuery = require("../../db/queries/insertUserQuery");
 const { generateError } = require("../../helpers");
 
 const newUser = async (req, res, next) => {

@@ -1,3 +1,5 @@
+"use strict";
+
 const newUser = require("./newUser");
 const loginUser = require("./loginUser");
 module.exports = {
