@@ -11,9 +11,16 @@ app.use(express.json());
 
 app.use(morgan("dev"));
 
+//middleware
+const isAuth = require("./middelwares/isAuth");
+
 const newUser = require("./controllers/users/newUser");
+const loginUser = require("./controllers/users/loginUser");
+const getOwnUser = require("./controllers/users/getOwnUser");
 
 app.post("/users", newUser);
+app.post("/users/login", loginUser);
+app.get("/users", isAuth, getOwnUser);
 
 // Middleware gestion de errores.
 app.use((err, req, res, next) => {
