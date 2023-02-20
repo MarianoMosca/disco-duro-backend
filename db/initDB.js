@@ -1,16 +1,13 @@
-// No es necesario replicar este código en "getDB.js".
+"use strict";
+
 require("dotenv").config();
 
-// Importamos la función que permite obtener una conexión con la base de datos.
 const getDB = require("./getDB");
 
-// Función que se encarga de crear las tablas.
 const createTables = async () => {
-  // Variable que almacenará una conexión libre con la base de datos.
   let connection;
 
   try {
-    // Intentamos obtener una conexión libre.
     connection = await getDB();
 
     console.log("Borrando tablas...");
@@ -28,8 +25,8 @@ const createTables = async () => {
                 email VARCHAR(100) UNIQUE NOT NULL,          
                 password VARCHAR(100) NOT NULL,
                 avatar VARCHAR(100),
-                createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
-                
+                createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+                modifiedAt TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
             )
         `);
 
