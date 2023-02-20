@@ -1,8 +1,8 @@
 "use strict";
 
-const getDB = require("../getDB");
+const getDB = require("../../getDB");
 
-const { generateError } = require("../../helpers");
+const { generateError } = require("../../../helpers");
 
 const selectUserByIdQuery = async (idUser) => {
   let connection;

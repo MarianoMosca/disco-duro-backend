@@ -1,6 +1,6 @@
 "use strict";
 
-const selectUserByIdQuery = require("../../db/queries/selectUserByIdQuery");
+const selectUserByIdQuery = require("../../db/queries/users/selectUserByIdQuery");
 
 const getOwnUser = async (req, res, next) => {
   try {

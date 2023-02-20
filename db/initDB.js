@@ -25,8 +25,8 @@ const createTables = async () => {
                 email VARCHAR(100) UNIQUE NOT NULL,          
                 password VARCHAR(100) NOT NULL,
                 avatar VARCHAR(100),
-                createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
-                
+                createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+                modifiedAt TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
             )
         `);
 

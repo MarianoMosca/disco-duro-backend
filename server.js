@@ -19,11 +19,17 @@ const isAuth = require("./middlewares/isAuth");
 
 // Controladores.
 
-const { newUser, loginUser, getOwnUser } = require("./controllers/users");
+const {
+  newUser,
+  loginUser,
+  getOwnUser,
+  editUser,
+} = require("./controllers/users");
 
 app.post("/users", newUser);
 app.post("/users/login", loginUser);
 app.get("/users", isAuth, getOwnUser);
+app.put("/users", isAuth, editUser);
 // Middleware gestion de errores.
 app.use((err, req, res, next) => {
   console.error(err);
