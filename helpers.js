@@ -54,8 +54,24 @@ const deleteImg = async (imgName) => {
   }
 };
 
+const saveFile = async (file) => {
+  const filesDir = path.join(__dirname, process.env.FILES_DIR);
+  try {
+    try {
+      await fs.access(filesDir);
+    } catch {
+      await fs.mkdir(filesDir);
+    }
+
+    return file;
+  } catch (err) {
+    generateError("No se pudo guardar el archivo en el disco");
+  }
+};
+
 module.exports = {
   generateError,
   saveImg,
   deleteImg,
+  saveFile,
 };

@@ -43,6 +43,7 @@ const createTables = async () => {
     await connection.query(`
             CREATE TABLE IF NOT EXISTS files (
                 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+                fileName VARCHAR(100) NOT NULL, 
                 idUser INT UNSIGNED NOT NULL,
                 idFolder INT UNSIGNED NOT NULL,          
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,

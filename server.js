@@ -19,7 +19,7 @@ app.use(morgan("dev"));
 
 const isAuth = require("./middlewares/isAuth");
 
-// Controladores.
+// Controladores usuarios.
 
 const {
   newUser,
@@ -38,6 +38,13 @@ app.get("/users", isAuth, getOwnUser);
 app.put("/users", isAuth, editUser);
 
 app.put("/users/avatar", isAuth, editUserAvatar);
+
+// Controladores archivos.
+
+const { newFile } = require("./controllers/files");
+
+app.post("/files", newFile);
+
 // Middleware gestion de errores.
 app.use((err, req, res, next) => {
   console.error(err);
