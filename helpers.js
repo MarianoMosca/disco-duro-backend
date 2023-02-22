@@ -55,18 +55,30 @@ const deleteImg = async (imgName) => {
 };
 
 const saveFile = async (file) => {
-  const filesDir = path.join(__dirname, process.env.FILES_DIR);
-  try {
-    try {
-      await fs.access(filesDir);
-    } catch {
-      await fs.mkdir(filesDir);
-    }
+  // Creamos la ruta absoluta al directorio donde vamos a subir los ficheros.
+  const uploadsPath = path.join(__dirname, process.env.UPLOADS_DIR);
 
-    return file;
-  } catch (err) {
-    generateError("No se pudo guardar el archivo en el disco");
+  try {
+    // Intentamos acceder al directorio de subida de archivos mediante el método
+    // "access". Este método genera un error si no es posible acceder arl archivo
+    // o directorio.
+    await fs.access(uploadsPath);
+  } catch {
+    // Si "access" lanza un error entramos en el catch y creamos el directorio.
+    await fs.mkdir(uploadsPath);
   }
+
+  // Generamos un nombre único para el fichero
+  const fileName = `${uuid()}`;
+
+  // Generamos la ruta absoluta a la imagen que queremos guardar.
+  const imgPath = path.join(uploadsPath, fileName);
+
+  // Guardamos el fichero en el directorio de subida de archivos.
+
+  await fs.writeFile(imgPath, file);
+  // Retornamos el nombre del fichero.  Ya la tenemos en disco.
+  return fileName;
 };
 
 module.exports = {

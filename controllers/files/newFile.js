@@ -1,20 +1,25 @@
-const insertNewFileQuery = require("../../db/queries/files/insertNewFileQuery");
-
+const insertFileQuery = require("../../db/queries/files/insertFileQuery");
+const fs = require("fs/promises");
 const { generateError, saveFile } = require("../../helpers");
 
 const newFile = async (req, res, next) => {
+  console.log(req.files.fichero.name);
+  console.log(req.user);
   try {
-    const { fileName } = req.params;
-
-    if (!req.files?.file) {
-      generateError("Falta el archivo", 400);
+    const fileName = await saveFile(req.files.fichero.name);
+    const idUser = req.user.id;
+    //const { idFile } = req.files;
+    // Si falta el fichero lanzamos un error.
+    if (!req.files?.fichero) {
+      generateError("Faltan campos", 400);
     }
 
-    await insertNewFileQuery(fileName, req.user.id);
-    await saveFile(fileName);
+    // Actualizamos los ficheros del usuario.
+    await insertFileQuery(fileName, idUser);
+
     res.send({
       status: "ok",
-      message: "Archivo subido exitosamente",
+      message: "Archivo agregado",
     });
   } catch (err) {
     next(err);

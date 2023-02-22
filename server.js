@@ -43,7 +43,7 @@ app.put("/users/avatar", isAuth, editUserAvatar);
 
 const { newFile } = require("./controllers/files");
 
-app.post("/files", newFile);
+app.post("/files", isAuth, newFile);
 
 // Middleware gestion de errores.
 app.use((err, req, res, next) => {
