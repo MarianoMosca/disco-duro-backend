@@ -9,6 +9,8 @@ const newFile = async (req, res, next) => {
     if (!req.files?.file) {
       generateError("Falta el archivo", 400);
     }
+
+    await insertNewFileQuery(fileName, req.user.id);
     await saveFile(fileName);
     res.send({
       status: "ok",
