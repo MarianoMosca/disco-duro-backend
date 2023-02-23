@@ -81,9 +81,32 @@ const saveFile = async (file) => {
   return fileName;
 };
 
+const deleteArchive = async (fileName) => {
+  try {
+    // Creamos la ruta absoluta al fichero que queremos eliminar.
+    const imgPath = path.join(__dirname, process.env.UPLOADS_DIR, fileName);
+
+    try {
+      // Intentamos acceder al archivo utilizando el método "access" de fs. Este
+      // método genera un error si no es posible acceder al archivo.
+      await fs.access(imgPath);
+    } catch (error) {
+      // Si "access" genera un error entramos en el "catch". Finalizamos la función
+      // dado que el fichero no existe, no tiene sentido borrarlo.
+      return;
+    }
+
+    // Si llegamos hasta aquí quiere decir que el fichero existe. Lo eliminamos.
+    await fs.unlink(imgPath);
+  } catch {
+    generateError("Error al eliminar el fichero del servidor");
+  }
+};
+
 module.exports = {
   generateError,
   saveImg,
   deleteImg,
   saveFile,
+  deleteArchive,
 };
