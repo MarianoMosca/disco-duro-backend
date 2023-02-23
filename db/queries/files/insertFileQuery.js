@@ -8,7 +8,7 @@ const insertFileQuery = async (name, idUser) => {
 
     const [file] = await connection.query(
       ` 
-      INSERT INTO files (name, id) VALUES (?, ?) `,
+      INSERT INTO files (name, idUser) VALUES (?, ?) `,
       [name, idUser]
     );
 

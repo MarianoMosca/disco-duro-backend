@@ -60,7 +60,7 @@ const saveFile = async (file) => {
 
   try {
     // Intentamos acceder al directorio de subida de archivos mediante el método
-    // "access". Este método genera un error si no es posible acceder arl archivo
+    // "access". Este método genera un error si no es posible acceder al archivo
     // o directorio.
     await fs.access(uploadsPath);
   } catch {
