@@ -8,19 +8,20 @@ const deleteFileQuery = async (idFile, idUser) => {
   try {
     connection = await getDB();
 
-    const [files] = await connection.query(
+    const [fileName] = await connection.query(
       `
     SELECT name FROM files WHERE id = ? AND idUser = ?
     `,
       [idFile, idUser]
     );
 
-    if (files.length < 1) {
+    console.log(fileName);
+    if (fileName.length < 1) {
       generateError("Archivo no encontrado", 404);
     }
 
-    if (files.name) {
-      await deleteArchive(files[0].name);
+    if (fileName) {
+      await deleteArchive(fileName[0].name);
     }
 
     await connection.query(
