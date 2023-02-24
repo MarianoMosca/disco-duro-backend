@@ -81,7 +81,7 @@ const saveFile = async (file) => {
   return fileName;
 };
 
-/* const deleteArchive = async (fileName) => {
+const deleteArchive = async (fileName) => {
   try {
     // Creamos la ruta absoluta a la imagen que queremos eliminar.
     const filePath = path.join(__dirname, process.env.UPLOADS_DIR, fileName);
@@ -100,18 +100,6 @@ const saveFile = async (file) => {
     await fs.unlink(filePath, fileName);
   } catch {
     generateError("Error al eliminar la imagen del servidor");
-  }
-}; */
-
-const deleteArchive = async (fileName) => {
-  try {
-    const filePath = path.join(__dirname, UPLOADS_DIR, fileName);
-
-    console.log(filePath);
-    await fs.remove(filePath);
-  } catch (err) {
-    console.error(err);
-    generateError("Error al eliminar la imagen del disco");
   }
 };
 
