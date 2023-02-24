@@ -69,7 +69,8 @@ const saveFile = async (file) => {
   }
 
   // Generamos un nombre único para el fichero
-  const fileName = `${uuid()}`;
+  const fileName =
+    `${uuid()}` + `${file.substring(file.lastIndexOf(".")).toLowerCase()}`;
 
   // Generamos la ruta absoluta a la imagen que queremos guardar.
   const filePath = path.join(uploadsPath, fileName);
