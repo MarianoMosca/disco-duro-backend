@@ -1,23 +1,27 @@
 const getDB = require("../../getDB");
-const deleteArchive = require("../../../helpers");
-const generateError = require("../../../helpers");
-const deleteFileQuery = async (idFile) => {
+
+const { generateError, deleteArchive } = require("../../../helpers");
+
+const deleteFileQuery = async (idFile, idUser) => {
   let connection;
 
   try {
     connection = await getDB();
 
-    const [file] = await connection.query(
+    const [files] = await connection.query(
       `
-    SELECT name FROM files WHERE id = ? 
-    `[idFile]
+    SELECT name FROM files WHERE id = ? AND idUser = ?
+    `,
+      [idFile, idUser]
     );
 
-    if (file.length < 1) {
+    if (files.length < 1) {
       generateError("Archivo no encontrado", 404);
     }
 
-    await deleteArchive(file[0].name);
+    if (files.name) {
+      await deleteArchive(files[0].name);
+    }
 
     await connection.query(
       `

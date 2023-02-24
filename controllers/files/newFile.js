@@ -4,11 +4,11 @@ const { generateError, saveFile } = require("../../helpers");
 
 const newFile = async (req, res, next) => {
   try {
-    const fileName = await saveFile(req.files.fichero.name);
+    const fileName = await saveFile(req.files.file.name);
     const idUser = req.user.id;
 
     // Si falta el fichero lanzamos un error.
-    if (!req.files?.fichero) {
+    if (!req.files?.file) {
       generateError("Faltan campos", 400);
     }
 

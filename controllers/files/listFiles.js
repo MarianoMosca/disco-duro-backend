@@ -2,7 +2,7 @@ const selectFilesQuery = require("../../db/queries/files/selectFilesQuery");
 
 const listFiles = async (req, res, next) => {
   try {
-    const file = await selectFilesQuery(req.user?.id);
+    const file = await selectFilesQuery(req.user.id);
 
     res.send({
       status: "ok",

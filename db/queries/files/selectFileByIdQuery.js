@@ -9,11 +9,12 @@ const selectFileByIdQuery = async (idFile, idUser) => {
 
     const [files] = await connection.query(
       `
-    SELECT * FROM files where id = ? AND idUser = ?
-    `,
+      SELECT * FROM files WHERE id = ? AND idUser = ?
+      `,
       [idFile, idUser]
     );
 
+    console.log(files);
     if (files.length < 1) {
       generateError("Fichero no encontrado", 404);
     }

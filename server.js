@@ -44,8 +44,8 @@ app.put("/users/avatar", isAuth, editUserAvatar);
 const { newFile, deleteFile, listFiles } = require("./controllers/files");
 
 app.post("/files", isAuth, newFile);
-app.get("/files/:idUser", isAuth, listFiles);
-app.delete("files/:idFile", isAuth, deleteFile);
+app.get("/files/", isAuth, listFiles);
+app.delete("/users/:idUser/files/:idFile", isAuth, deleteFile);
 
 // Middleware gestion de errores.
 app.use((err, req, res, next) => {

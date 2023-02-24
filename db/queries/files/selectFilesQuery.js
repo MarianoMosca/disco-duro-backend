@@ -9,7 +9,10 @@ const selectFilesQuery = async (idUser) => {
 
     const [files] = await connection.query(
       `
-    SELECT * FROM files WHERE idUser = ?
+    SELECT F.*, U.name AS user
+    FROM files F
+    INNER JOIN users U ON U.id = F.idUser
+    WHERE idUser = ?
     `,
       [idUser]
     );

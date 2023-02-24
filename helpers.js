@@ -72,34 +72,34 @@ const saveFile = async (file) => {
   const fileName = `${uuid()}`;
 
   // Generamos la ruta absoluta a la imagen que queremos guardar.
-  const imgPath = path.join(uploadsPath, fileName);
+  const filePath = path.join(uploadsPath, fileName);
 
   // Guardamos el fichero en el directorio de subida de archivos.
 
-  await fs.writeFile(imgPath, file);
+  await fs.writeFile(filePath, file);
   // Retornamos el nombre del fichero.  Ya la tenemos en disco.
   return fileName;
 };
 
 const deleteArchive = async (fileName) => {
   try {
-    // Creamos la ruta absoluta al fichero que queremos eliminar.
-    const imgPath = path.join(__dirname, process.env.UPLOADS_DIR, fileName);
+    // Creamos la ruta absoluta a la imagen que queremos eliminar.
+    const filePath = path.join(__dirname, process.env.UPLOADS_DIR, fileName);
 
     try {
-      // Intentamos acceder al archivo utilizando el método "access" de fs. Este
+      // Intentamos acceder a la imagen utilizando el método "access" de fs. Este
       // método genera un error si no es posible acceder al archivo.
-      await fs.access(imgPath);
+      await fs.access(filePath);
     } catch (error) {
       // Si "access" genera un error entramos en el "catch". Finalizamos la función
-      // dado que el fichero no existe, no tiene sentido borrarlo.
+      // dado que la imagen no existe, no tiene sentido borrarla.
       return;
     }
 
-    // Si llegamos hasta aquí quiere decir que el fichero existe. Lo eliminamos.
-    await fs.unlink(imgPath);
+    // Si llegamos hasta aquí quiere decir que la imagen existe. La eliminamos.
+    await fs.unlink(filePath, fileName);
   } catch {
-    generateError("Error al eliminar el fichero del servidor");
+    generateError("Error al eliminar la imagen del servidor");
   }
 };
 
