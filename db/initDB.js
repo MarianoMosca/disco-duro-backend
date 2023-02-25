@@ -30,7 +30,7 @@ const createTables = async () => {
             )
         `);
 
-    /*  await connection.query(`
+    await connection.query(`
             CREATE TABLE IF NOT EXISTS folders (
                 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
                 idUser INT UNSIGNED NOT NULL,
@@ -39,7 +39,7 @@ const createTables = async () => {
                 FOREIGN KEY(idUser) REFERENCES users(id)
             )
         `);
- */
+
     await connection.query(`
             CREATE TABLE IF NOT EXISTS files (
                 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,

@@ -47,6 +47,13 @@ app.post("/files", isAuth, newFile);
 app.get("/files/", isAuth, listFiles);
 app.delete("/users/:idUser/files/:idFile", isAuth, deleteFile);
 
+// Controladores carpetas.
+
+const { newFolder, listFolders } = require("./controllers/folders");
+
+app.post("/folders/idFile", newFolder);
+app.get("folders", listFolders);
+
 // Middleware gestion de errores.
 app.use((err, req, res, next) => {
   console.error(err);
