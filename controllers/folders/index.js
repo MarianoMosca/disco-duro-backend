@@ -1,4 +1,5 @@
 const newFolder = require("./newFolder");
-const listFolders = require("./listFolders");
-
-module.exports = { newFolder, listFolders };
+const deleteFolder = require("./deleteFolder");
+/* const listFolders = require("./listFolders");
+ */
+module.exports = { newFolder, deleteFolder };
