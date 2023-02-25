@@ -41,19 +41,24 @@ app.put("/users/avatar", isAuth, editUserAvatar);
 
 // Controladores archivos.
 
-const { newFile, deleteFile, listFiles } = require("./controllers/files");
+const {
+  newFile,
+  deleteFile,
+  listFiles,
+  downloadFile,
+} = require("./controllers/files");
 
 app.post("/files", isAuth, newFile);
 app.get("/files/", isAuth, listFiles);
 app.delete("/users/:idUser/files/:idFile", isAuth, deleteFile);
+app.get("/files/download", isAuth, downloadFile);
 
 // Controladores carpetas.
 
 const { newFolder, listFolders } = require("./controllers/folders");
 
-app.post("/folders/idFile", newFolder);
-app.get("folders", listFolders);
-
+app.post("/folders", isAuth, newFolder);
+app.get("/folders", listFolders);
 // Middleware gestion de errores.
 app.use((err, req, res, next) => {
   console.error(err);
