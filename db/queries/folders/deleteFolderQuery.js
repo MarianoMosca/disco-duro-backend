@@ -15,7 +15,6 @@ const deleteFolderQuery = async (idFolder, idUser) => {
       [idFolder, idUser]
     );
 
-    console.log(folderName);
     if (folderName.length < 1) {
       generateError("Archivo no encontrado", 404);
     }

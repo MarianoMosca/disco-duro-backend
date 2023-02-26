@@ -3,7 +3,6 @@ const fs = require("fs/promises");
 const path = require("path");
 const sharp = require("sharp");
 const { v4: uuid } = require("uuid");
-const { UPLOADS_DIR } = process.env;
 const generateError = (msg, status) => {
   const err = new Error(msg);
   err.httpStatus = status;
