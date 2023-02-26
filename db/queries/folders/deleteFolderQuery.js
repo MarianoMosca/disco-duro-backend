@@ -26,7 +26,7 @@ const deleteFolderQuery = async (idFolder, idUser) => {
 
     await connection.query(
       `
-    DELETE FROM files WHERE id = ? 
+    DELETE FROM folders WHERE id = ? 
     `,
       [idFolder]
     );

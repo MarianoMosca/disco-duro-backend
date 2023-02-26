@@ -3,8 +3,7 @@ const selectFoldersQuery = require("../../db/queries/folders/selectFoldersQuery"
 
 const listFolders = async (req, res, next) => {
   try {
-    const { getFolders } = req.params;
-    const folders = await selectFoldersQuery(getFolders);
+    const folders = await selectFoldersQuery();
 
     res.send({
       status: "ok",

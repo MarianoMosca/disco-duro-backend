@@ -55,10 +55,14 @@ app.get("/files/download", isAuth, downloadFile);
 
 // Controladores carpetas.
 
-const { newFolder, deleteFolder } = require("./controllers/folders");
+const {
+  newFolder,
+  deleteFolder,
+  listFolders,
+} = require("./controllers/folders");
 
 app.post("/folders", isAuth, newFolder);
-/* app.get("/folders", listFolders); */
+app.get("/folders", isAuth, listFolders);
 app.delete("/users/:idUser/folders/:idFolder", isAuth, deleteFolder);
 
 // Middleware gestion de errores.

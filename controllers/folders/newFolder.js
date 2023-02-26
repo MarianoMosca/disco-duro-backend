@@ -23,10 +23,9 @@ const newFolder = async (req, res, next) => {
 
     res.send({
       status: "Ok",
-      message: "Carpeta creada",
       data: {
         files,
-        id: req.user.id,
+        idUser: req.user.id,
         createdAt: new Date(),
       },
     });
