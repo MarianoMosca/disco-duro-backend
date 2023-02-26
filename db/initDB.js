@@ -34,7 +34,7 @@ const createTables = async () => {
             CREATE TABLE IF NOT EXISTS folders (
                 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
                 idUser INT UNSIGNED NOT NULL,
-                name VARCHAR(100) NOT NULL,          
+                name VARCHAR(100),     
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY(idUser) REFERENCES users(id)
             )

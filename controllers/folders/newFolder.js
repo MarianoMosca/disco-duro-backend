@@ -9,13 +9,14 @@ const newFolder = async (req, res, next) => {
       generateError("Faltan campos", 400);
     }
 
-    const folderId = insertFolderQuery(name, req.user.id);
+    await insertFolderQuery(name, req.user.id);
 
     let files = [];
 
     if (req.files) {
       for (const file of Object.values(req.files).slice(0, 3)) {
         const fileName = await saveFile(file.name);
+
         files.push(fileName);
       }
     }
@@ -23,8 +24,11 @@ const newFolder = async (req, res, next) => {
     res.send({
       status: "Ok",
       message: "Carpeta creada",
-      folderId,
-      files,
+      data: {
+        files,
+        id: req.user.id,
+        createdAt: new Date(),
+      },
     });
   } catch (err) {
     next(err);

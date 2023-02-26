@@ -16,7 +16,7 @@ const deleteFolder = async (req, res, next) => {
 
     res.send({
       status: "ok",
-      message: "archivo eliminado",
+      message: "Carpeta eliminada",
     });
   } catch (err) {
     next(err);
