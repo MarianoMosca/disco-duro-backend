@@ -15,7 +15,7 @@ const newFolder = async (req, res, next) => {
 
     if (req.files) {
       for (const file of Object.values(req.files).slice(0, 3)) {
-        const fileName = await saveFile(file.name);
+        const fileName = await saveFile(file);
 
         files.push(fileName);
       }

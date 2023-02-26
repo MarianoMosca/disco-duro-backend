@@ -1,16 +1,15 @@
 const getDB = require("../../getDB");
 
-const downloadFilesQuery = async (name) => {
+const downloadFilesQuery = async (idUser, idFile) => {
   let connection;
 
   try {
     connection = await getDB();
 
     const [file] = await connection.query(
-      `
-    SELECT name FROM files WHERE id = ?
+      ` SELECT name FROM files WHERE idUser = ? AND idFile= ?
     `,
-      [name]
+      [idUser, idFile]
     );
     console.log(file);
     return file[0];

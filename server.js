@@ -6,7 +6,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
 const app = express();
-
+const fs = require("fs/promises");
 app.use(cors());
 
 app.use(express.json());
@@ -16,6 +16,9 @@ app.use(fileUpload());
 app.use(morgan("dev"));
 
 // Middleware personalizados.
+const { join } = require("path");
+
+app.use(express.static(join(__dirname, "uploads")));
 
 const isAuth = require("./middlewares/isAuth");
 
@@ -51,7 +54,7 @@ const {
 app.post("/files", isAuth, newFile);
 app.get("/files/", isAuth, listFiles);
 app.delete("/users/:idUser/files/:idFile", isAuth, deleteFile);
-app.get("/files/download", isAuth, downloadFile);
+app.get("/download", isAuth, downloadFile);
 
 // Controladores carpetas.
 
@@ -60,6 +63,7 @@ const {
   deleteFolder,
   listFolders,
 } = require("./controllers/folders");
+const { generateError } = require("./helpers");
 
 app.post("/folders", isAuth, newFolder);
 app.get("/folders", isAuth, listFolders);

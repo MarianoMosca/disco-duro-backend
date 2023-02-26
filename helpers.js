@@ -69,16 +69,25 @@ const saveFile = async (file) => {
 
   // Generamos un nombre único para el fichero
   const fileName =
-    `${uuid()}` + `${file.substring(file.lastIndexOf(".")).toLowerCase()}`;
+    `${uuid()}` +
+    `${file.name.substring(file.name.lastIndexOf(".")).toLowerCase()}`;
 
   // Generamos la ruta absoluta a la imagen que queremos guardar.
   const filePath = path.join(uploadsPath, fileName);
 
   // Guardamos el fichero en el directorio de subida de archivos.
 
-  await fs.writeFile(filePath, file);
+  console.log(file);
+
+  await fs.writeFile(filePath, file.data, "utf-8");
   // Retornamos el nombre del fichero.  Ya la tenemos en disco.
   return fileName;
+};
+
+const readFile = async (fileName) => {
+  const uploadsPath = path.join(__dirname, process.env.UPLOADS_DIR);
+  const file = await fs.readFile(path.join(uploadsPath, fileName));
+  return file;
 };
 
 const deleteArchive = async (fileName) => {
@@ -109,4 +118,5 @@ module.exports = {
   deleteImg,
   saveFile,
   deleteArchive,
+  readFile,
 };
