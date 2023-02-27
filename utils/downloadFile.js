@@ -1,7 +1,7 @@
 const fs = require("fs/promises");
 const path = require("path");
 
-const selectFileByIdQuery = require("./db/queries/files/selectFileByIdQuery");
+const selectFileByIdQuery = require("../db/queries/files/selectFileByIdQuery");
 const { generateError } = require("./helpers");
 
 const downloadFile = async (req, res, next) => {

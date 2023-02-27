@@ -1,6 +1,6 @@
 const insertFileQuery = require("../../db/queries/files/insertFileQuery");
 
-const { generateError, saveFile } = require("../../helpers");
+const { generateError, saveFile } = require("../../utils/helpers");
 
 const newFile = async (req, res, next) => {
   try {

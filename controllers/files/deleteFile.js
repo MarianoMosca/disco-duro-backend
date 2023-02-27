@@ -1,6 +1,6 @@
 const deleteFileQuery = require("../../db/queries/files/deleteFileQuery");
 const selectFileByIdQuery = require("../../db/queries/files/selectFileByIdQuery");
-const { generateError } = require("../../helpers");
+const { generateError } = require("../../utils/helpers");
 
 const deleteFile = async (req, res, next) => {
   try {

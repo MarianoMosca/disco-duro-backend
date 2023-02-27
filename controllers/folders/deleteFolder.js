@@ -1,6 +1,6 @@
 const deleteFolderQuery = require("../../db/queries/folders/deleteFolderQuery");
 const selectFolderByIdQuery = require("../../db/queries/folders/selectFolderByIdQuery");
-const { generateError } = require("../../helpers");
+const { generateError } = require("../../utils/helpers");
 
 const deleteFolder = async (req, res, next) => {
   try {

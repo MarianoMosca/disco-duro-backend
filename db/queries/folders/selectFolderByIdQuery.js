@@ -1,7 +1,7 @@
 "use strict";
 const getDB = require("../../getDB");
 
-const { generateError } = require("../../../helpers");
+const { generateError } = require("../../../utils/helpers");
 
 const selectFolderByIdQuery = async (idFolder, idUser) => {
   let connection;

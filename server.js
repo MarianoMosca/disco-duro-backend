@@ -44,16 +44,16 @@ app.put("/users/avatar", isAuth, editUserAvatar);
 
 // Controladores archivos.
 
-const {
-  newFile,
-  deleteFile,
-  listFiles,
-  downloadFile,
-} = require("./controllers/files");
+const { newFile, deleteFile, listFiles } = require("./controllers/files");
 
 app.post("/files", isAuth, newFile);
 app.get("/files/", isAuth, listFiles);
 app.delete("/users/:idUser/files/:idFile", isAuth, deleteFile);
+
+// Gestión de descarga de archivos.
+
+const downloadFile = require("./utils/downloadFile");
+
 app.get("/download/:idFile", isAuth, downloadFile);
 
 // Controladores carpetas.
@@ -63,7 +63,7 @@ const {
   deleteFolder,
   listFolders,
 } = require("./controllers/folders");
-const { generateError } = require("./helpers");
+const { generateError } = require("./utils/helpers");
 
 app.post("/folders", isAuth, newFolder);
 app.get("/folders", isAuth, listFolders);

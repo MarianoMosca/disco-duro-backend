@@ -1,4 +1,4 @@
-const { generateError, saveFile } = require("../../helpers");
+const { generateError, saveFile } = require("../../utils/helpers");
 const insertFolderQuery = require("../../db/queries/folders/insertFolderQuery");
 
 const newFolder = async (req, res, next) => {

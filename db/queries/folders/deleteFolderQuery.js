@@ -1,6 +1,6 @@
 const getDB = require("../../getDB");
 
-const { generateError, deleteArchive } = require("../../../helpers");
+const { generateError, deleteArchive } = require("../../../utils/helpers");
 
 const deleteFolderQuery = async (idFolder, idUser) => {
   let connection;

@@ -5,7 +5,7 @@ const selectUserByEmailQuery = require("../../db/queries/users/selectUserByEmail
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-const { generateError } = require("../../helpers");
+const { generateError } = require("../../utils/helpers");
 
 const loginUser = async (req, res, next) => {
   try {
