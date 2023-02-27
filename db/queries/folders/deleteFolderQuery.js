@@ -1,3 +1,5 @@
+"use strict";
+
 const getDB = require("../../getDB");
 
 const { generateError, deleteArchive } = require("../../../utils/helpers");

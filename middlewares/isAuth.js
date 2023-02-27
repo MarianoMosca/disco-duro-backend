@@ -1,4 +1,7 @@
+"use strict";
+
 const jwt = require("jsonwebtoken");
+
 const { generateError } = require("../utils/helpers");
 
 const isAuth = async (req, res, next) => {

@@ -1,3 +1,5 @@
+"use strict";
+
 const insertFileQuery = require("../../db/queries/files/insertFileQuery");
 
 const { generateError, saveFile } = require("../../utils/helpers");
@@ -7,12 +9,10 @@ const newFile = async (req, res, next) => {
     const fileName = await saveFile(req.files.file);
     const idUser = req.user.id;
 
-    // Si falta el fichero lanzamos un error.
     if (!req.files?.file) {
       generateError("Faltan campos", 400);
     }
 
-    // Actualizamos los ficheros del usuario.
     await insertFileQuery(fileName, idUser);
 
     res.send({

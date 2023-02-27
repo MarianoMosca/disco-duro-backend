@@ -1,3 +1,5 @@
+"use strict";
+
 const { generateError } = require("../../utils/helpers");
 const updateUserQuery = require("../../db/queries/users/updateUserQuery");
 

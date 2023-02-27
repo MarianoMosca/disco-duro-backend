@@ -1,3 +1,5 @@
+"use strict";
+
 const { generateError } = require("../../../utils/helpers");
 const getDB = require("../../getDB");
 
@@ -14,7 +16,6 @@ const selectFileByIdQuery = async (idFile, idUser) => {
       [idFile, idUser]
     );
 
-    console.log(files);
     if (files.length < 1) {
       generateError("Fichero no encontrado", 404);
     }

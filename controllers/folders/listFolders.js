@@ -1,4 +1,5 @@
 "use strict";
+
 const selectFoldersQuery = require("../../db/queries/folders/selectFoldersQuery");
 
 const listFolders = async (req, res, next) => {

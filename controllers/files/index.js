@@ -1,3 +1,5 @@
+"use strict";
+
 const newFile = require("./newFile");
 const deleteFile = require("./deleteFile");
 const listFiles = require("./listFiles");

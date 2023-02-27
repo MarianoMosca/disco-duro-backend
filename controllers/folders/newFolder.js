@@ -1,3 +1,5 @@
+"use strict";
+
 const { generateError, saveFile } = require("../../utils/helpers");
 const insertFolderQuery = require("../../db/queries/folders/insertFolderQuery");
 

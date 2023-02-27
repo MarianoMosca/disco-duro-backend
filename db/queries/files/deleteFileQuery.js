@@ -1,3 +1,5 @@
+"use strict";
+
 const getDB = require("../../getDB");
 
 const { generateError, deleteArchive } = require("../../../utils/helpers");
@@ -15,7 +17,6 @@ const deleteFileQuery = async (idFile, idUser) => {
       [idFile, idUser]
     );
 
-    console.log(fileName);
     if (fileName.length < 1) {
       generateError("Archivo no encontrado", 404);
     }

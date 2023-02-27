@@ -1,3 +1,5 @@
+"use strict";
+
 const deleteFileQuery = require("../../db/queries/files/deleteFileQuery");
 const selectFileByIdQuery = require("../../db/queries/files/selectFileByIdQuery");
 const { generateError } = require("../../utils/helpers");

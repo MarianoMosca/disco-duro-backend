@@ -1,4 +1,5 @@
-const { generateError } = require("../../../utils/helpers");
+"use strict";
+
 const getDB = require("../../getDB");
 
 const selectFilesQuery = async (idUser) => {

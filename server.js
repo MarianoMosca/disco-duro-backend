@@ -63,7 +63,6 @@ const {
   deleteFolder,
   listFolders,
 } = require("./controllers/folders");
-const { generateError } = require("./utils/helpers");
 
 app.post("/folders", isAuth, newFolder);
 app.get("/folders", isAuth, listFolders);

@@ -1,3 +1,5 @@
+"use strict";
+
 const fs = require("fs/promises");
 const path = require("path");
 
@@ -12,8 +14,6 @@ const downloadFile = async (req, res, next) => {
     console.log(file);
     const filePath = path.join(__dirname, "/uploads/", file.name);
 
-    console.log(filePath);
-
     try {
       await fs.access(filePath);
     } catch (error) {
@@ -22,7 +22,6 @@ const downloadFile = async (req, res, next) => {
 
     res.download(filePath);
   } catch (e) {
-    console.log(e);
     generateError("Error al descargar el fichero del servidor");
   }
 };

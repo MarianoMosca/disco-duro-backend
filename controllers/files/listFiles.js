@@ -1,3 +1,5 @@
+"use strict";
+
 const selectFilesQuery = require("../../db/queries/files/selectFilesQuery");
 
 const listFiles = async (req, res, next) => {

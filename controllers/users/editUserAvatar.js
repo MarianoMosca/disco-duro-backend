@@ -1,3 +1,5 @@
+"use strict";
+
 const selectUserByIdQuery = require("../../db/queries/users/selectUserByIdQuery");
 const updateAvatarUserQuery = require("../../db/queries/users/updateAvatarUserQuery");
 
