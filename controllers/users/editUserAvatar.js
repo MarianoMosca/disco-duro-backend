@@ -1,7 +1,9 @@
+"use strict";
+
 const selectUserByIdQuery = require("../../db/queries/users/selectUserByIdQuery");
 const updateAvatarUserQuery = require("../../db/queries/users/updateAvatarUserQuery");
 
-const { saveImg, deleteImg, generateError } = require("../../helpers");
+const { saveImg, deleteImg, generateError } = require("../../utils/helpers");
 
 const editUserAvatar = async (req, res, next) => {
   try {

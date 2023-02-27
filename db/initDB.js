@@ -34,7 +34,7 @@ const createTables = async () => {
             CREATE TABLE IF NOT EXISTS folders (
                 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
                 idUser INT UNSIGNED NOT NULL,
-                name VARCHAR(100) UNIQUE NOT NULL,          
+                name VARCHAR(100),     
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY(idUser) REFERENCES users(id)
             )
@@ -43,12 +43,14 @@ const createTables = async () => {
     await connection.query(`
             CREATE TABLE IF NOT EXISTS files (
                 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+                name VARCHAR(100) UNIQUE NOT NULL,
                 idUser INT UNSIGNED NOT NULL,
-                idFolder INT UNSIGNED NOT NULL,          
+                idFolder INT UNSIGNED,
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
                 modifiedAt TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                 FOREIGN KEY(idUser) REFERENCES users(id),
                 FOREIGN KEY(idFolder) REFERENCES folders(id)
+               
             )
         `);
 

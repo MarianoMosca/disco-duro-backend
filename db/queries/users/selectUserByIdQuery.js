@@ -2,7 +2,7 @@
 
 const getDB = require("../../getDB");
 
-const { generateError } = require("../../../helpers");
+const { generateError } = require("../../../utils/helpers");
 
 const selectUserByIdQuery = async (idUser) => {
   let connection;

@@ -1,4 +1,6 @@
-const { generateError } = require("../../helpers");
+"use strict";
+
+const { generateError } = require("../../utils/helpers");
 const updateUserQuery = require("../../db/queries/users/updateUserQuery");
 
 const editUser = async (req, res, next) => {
