@@ -52,4 +52,4 @@ Files:
 
 • GET [files] : Lista todos los archivos.
 
-• DELETE [/files/:idfiles] : Elimina un archivo.
+• DELETE [/users/:idUser/files/:idFile] : Elimina un archivo.
