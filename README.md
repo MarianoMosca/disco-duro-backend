@@ -1,6 +1,5 @@
 # Disco-duro
 
-
 Proyecto 2 Hack a Boss
 
 Este proyecto se crea con el objetivo de emular una aplicación similar a Dropbox o Google Drive; Un disco duro en la nube.
@@ -51,8 +50,8 @@ Files:
 
 • POST /files] : Añade un archivo.
 
-• GET [files] : Lista todos los archivos.
+• GET [/files] : Lista todos los archivos.
+
+• GET [/download/:idFile] : Descarga un archivo.
 
 • DELETE [/users/:idUser/files/:idFile] : Elimina un archivo.
-
-
