@@ -6,7 +6,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
 const app = express();
-const fs = require("fs/promises");
+
 app.use(cors());
 
 app.use(express.json());
