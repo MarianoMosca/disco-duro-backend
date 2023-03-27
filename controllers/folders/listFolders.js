@@ -4,12 +4,12 @@ const selectFoldersQuery = require("../../db/queries/folders/selectFoldersQuery"
 
 const listFolders = async (req, res, next) => {
   try {
-    const folders = await selectFoldersQuery();
+    const folder = await selectFoldersQuery(req.user.id);
 
     res.send({
       status: "ok",
       data: {
-        folders,
+        folder,
       },
     });
   } catch (err) {

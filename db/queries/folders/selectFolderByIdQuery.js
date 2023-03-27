@@ -26,7 +26,7 @@ const selectFolderByIdQuery = async (idFolder, idUser) => {
     }
 
     // Retornamos la carpeta
-    return folders[0];
+    return folders;
   } finally {
     if (connection) connection.release();
   }
