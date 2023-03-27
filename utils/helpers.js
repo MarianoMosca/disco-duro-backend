@@ -11,7 +11,7 @@ const generateError = (msg, status) => {
 };
 
 const saveImg = async (img) => {
-  const uploadsPath = path.join(__dirname, process.env.UPLOADS_DIR);
+  const uploadsPath = path.join(process.env.UPLOADS_AVATAR);
 
   try {
     await fs.access(uploadsPath);
@@ -34,7 +34,7 @@ const saveImg = async (img) => {
 
 const deleteImg = async (imgName) => {
   try {
-    const imgPath = path.join(__dirname, process.env.UPLOADS_DIR, imgName);
+    const imgPath = path.join(__dirname, process.env.UPLOADS_AVATAR, imgName);
 
     try {
       await fs.access(imgPath);
@@ -49,7 +49,7 @@ const deleteImg = async (imgName) => {
 };
 
 const saveFile = async (file) => {
-  const uploadsPath = path.join(__dirname, process.env.UPLOADS_DIR);
+  const uploadsPath = path.join(process.env.UPLOADS_DIR);
 
   try {
     await fs.access(uploadsPath);
@@ -69,14 +69,14 @@ const saveFile = async (file) => {
 };
 
 const readFile = async (fileName) => {
-  const uploadsPath = path.join(__dirname, process.env.UPLOADS_DIR);
+  const uploadsPath = path.join(process.env.UPLOADS_DIR);
   const file = await fs.readFile(path.join(uploadsPath, fileName));
   return file;
 };
 
 const deleteArchive = async (fileName) => {
   try {
-    const filePath = path.join(__dirname, process.env.UPLOADS_DIR, fileName);
+    const filePath = path.join(process.env.UPLOADS_DIR, fileName);
 
     try {
       await fs.access(filePath);

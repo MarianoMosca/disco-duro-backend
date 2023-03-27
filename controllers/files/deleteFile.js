@@ -6,7 +6,7 @@ const { generateError } = require("../../utils/helpers");
 
 const deleteFile = async (req, res, next) => {
   try {
-    const { idFile, idUser } = req.params;
+    const { idFile } = req.params;
 
     const file = await selectFileByIdQuery(idFile, req.user.id);
 
@@ -14,7 +14,7 @@ const deleteFile = async (req, res, next) => {
       generateError("No se encontro el archivo");
     }
 
-    await deleteFileQuery(idFile, idUser);
+    await deleteFileQuery(idFile);
 
     res.send({
       status: "ok",

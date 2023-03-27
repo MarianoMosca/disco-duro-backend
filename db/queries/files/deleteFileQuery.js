@@ -4,7 +4,7 @@ const getDB = require("../../getDB");
 
 const { generateError, deleteArchive } = require("../../../utils/helpers");
 
-const deleteFileQuery = async (idFile, idUser) => {
+const deleteFileQuery = async (idFile) => {
   let connection;
 
   try {
@@ -12,9 +12,9 @@ const deleteFileQuery = async (idFile, idUser) => {
 
     const [fileName] = await connection.query(
       `
-    SELECT name FROM files WHERE id = ? AND idUser = ?
+    SELECT name FROM files WHERE id = ? 
     `,
-      [idFile, idUser]
+      [idFile]
     );
 
     if (fileName.length < 1) {

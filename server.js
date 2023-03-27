@@ -50,7 +50,7 @@ app.post("/files", isAuth, newFile);
 
 app.get("/files", isAuth, listFiles);
 
-app.delete("/users/:idUser/files/:idFile", isAuth, deleteFile);
+app.delete("/files/:idFile", isAuth, deleteFile);
 
 // Gestión de descarga de archivos.
 
