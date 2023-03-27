@@ -44,9 +44,16 @@ app.put("/users/avatar", isAuth, editUserAvatar);
 
 // Controladores archivos.
 
-const { newFile, deleteFile, listFiles } = require("./controllers/files");
+const {
+  newFile,
+  deleteFile,
+  listFiles,
+  newFileInFolder,
+} = require("./controllers/files");
 
 app.post("/files", isAuth, newFile);
+
+app.post("/folders/:idFolders", isAuth, newFileInFolder);
 
 app.get("/files", isAuth, listFiles);
 
