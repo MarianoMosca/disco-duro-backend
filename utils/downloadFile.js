@@ -12,7 +12,7 @@ const downloadFile = async (req, res, next) => {
 
     const file = await selectFileByIdQuery(idFile, req.user.id);
     console.log(file);
-    const filePath = path.join(__dirname, "/uploads/", file.name);
+    const filePath = path.join(__dirname, "../uploadsFiles/", file.name);
 
     try {
       await fs.access(filePath);

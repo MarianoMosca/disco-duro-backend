@@ -8,9 +8,7 @@ const listFiles = async (req, res, next) => {
 
     res.send({
       status: "ok",
-      data: {
-        file,
-      },
+      data: file,
     });
   } catch (err) {
     next(err);

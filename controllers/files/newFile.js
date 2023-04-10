@@ -17,7 +17,9 @@ const newFile = async (req, res, next) => {
 
     res.send({
       status: "ok",
-      message: "Archivo agregado",
+
+      data: fileName,
+      idUser,
     });
   } catch (err) {
     next(err);
