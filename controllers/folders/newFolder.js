@@ -2,6 +2,7 @@
 
 const { generateError, saveFile } = require("../../utils/helpers");
 const insertFolderQuery = require("../../db/queries/folders/insertFolderQuery");
+const insertFileQuery = require("../../db/queries/files/insertFileQuery");
 
 const newFolder = async (req, res, next) => {
   try {
@@ -11,8 +12,8 @@ const newFolder = async (req, res, next) => {
       generateError("Faltan campos", 400);
     }
 
-    await insertFolderQuery(name, req.user.id);
-
+    const idFolder = await insertFolderQuery(name, req.user.id);
+    console.log(res);
     let files = [];
 
     if (req.files) {
@@ -20,6 +21,7 @@ const newFolder = async (req, res, next) => {
         const fileName = await saveFile(file);
 
         files.push(fileName);
+        await insertFileQuery(file.name, fileName, idFolder, req.user.id);
       }
     }
 

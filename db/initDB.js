@@ -44,6 +44,7 @@ const createTables = async () => {
             CREATE TABLE IF NOT EXISTS files (
                 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
                 name VARCHAR(100) UNIQUE NOT NULL,
+                originalName VARCHAR(255) NOT NULL,
                 idUser INT UNSIGNED NOT NULL,
                 idFolder INT UNSIGNED,
                 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,

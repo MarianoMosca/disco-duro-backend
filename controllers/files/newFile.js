@@ -1,25 +1,34 @@
 "use strict";
 
 const insertFileQuery = require("../../db/queries/files/insertFileQuery");
+const selectFileByIdQuery = require("../../db/queries/files/selectFileByIdQuery");
 
 const { generateError, saveFile } = require("../../utils/helpers");
 
 const newFile = async (req, res, next) => {
   try {
-    const fileName = await saveFile(req.files.file);
     const idUser = req.user.id;
 
-    if (!req.files?.file) {
+    const originalName = req.body.originalName;
+
+    const idFolder = req.body.idFolder;
+
+    if (!req.files?.file || !originalName) {
       generateError("Faltan campos", 400);
     }
+    const fileName = await saveFile(req.files.file);
 
-    await insertFileQuery(fileName, idUser);
+    const { id } = await insertFileQuery(
+      fileName,
+      originalName,
+      idFolder,
+      idUser
+    );
+    const fileInfo = await selectFileByIdQuery(id);
 
     res.send({
       status: "ok",
-
-      data: fileName,
-      idUser,
+      data: fileInfo,
     });
   } catch (err) {
     next(err);

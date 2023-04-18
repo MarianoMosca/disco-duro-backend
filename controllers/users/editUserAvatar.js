@@ -20,10 +20,11 @@ const editUserAvatar = async (req, res, next) => {
     const avatar = await saveImg(req.files.avatar, 200);
 
     await updateAvatarUserQuery(avatar, req.user.id);
-
+    console.log("Token recibido:", req.headers.authorization);
     res.send({
       status: "ok",
       message: "Usuario actualizado",
+      filename: avatar,
     });
   } catch (err) {
     next(err);

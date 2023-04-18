@@ -3,7 +3,7 @@
 const { generateError } = require("../../../utils/helpers");
 const getDB = require("../../getDB");
 
-const selectFileByIdQuery = async (idFile, idUser) => {
+const selectFileByIdQuery = async (idFile) => {
   let connection;
 
   try {
@@ -11,9 +11,9 @@ const selectFileByIdQuery = async (idFile, idUser) => {
 
     const [files] = await connection.query(
       `
-      SELECT * FROM files WHERE id = ? AND idUser = ?
+      SELECT * FROM files WHERE id = ? 
       `,
-      [idFile, idUser]
+      [idFile]
     );
 
     if (files.length < 1) {

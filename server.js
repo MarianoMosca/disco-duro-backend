@@ -18,7 +18,8 @@ app.use(morgan("dev"));
 // Middleware personalizados.
 const { join } = require("path");
 
-app.use(express.static(join(__dirname, "uploads")));
+app.use("/avatars", express.static(join(__dirname, "uploadsAvatar")));
+app.use("/files", express.static(join(__dirname, "uploadsFiles")));
 
 const isAuth = require("./middlewares/isAuth");
 
@@ -49,11 +50,14 @@ const {
   deleteFile,
   listFiles,
   newFileInFolder,
+  getFilesInFolder,
 } = require("./controllers/files");
 
 app.post("/files", isAuth, newFile);
 
 app.post("/folders/:idFolders", isAuth, newFileInFolder);
+
+app.get("/folders/:idFolder/files", isAuth, getFilesInFolder);
 
 app.get("/files", isAuth, listFiles);
 

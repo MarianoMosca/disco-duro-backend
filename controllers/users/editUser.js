@@ -11,11 +11,13 @@ const editUser = async (req, res, next) => {
       generateError("Faltan campos", 400);
     }
 
-    await updateUserQuery(name, email, req.user.id);
+    const user = await updateUserQuery(name, email, req.user.id);
 
     res.send({
       status: "ok",
       message: "Usuario actualizado",
+      name,
+      email,
     });
   } catch (err) {
     next(err);
