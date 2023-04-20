@@ -16,6 +16,10 @@ const insertFileQuery = async (name, originalName, idFolder, idUser) => {
 
     return {
       id: file.insertId,
+      idFolder,
+      name,
+      originalName,
+      idUser,
     };
   } finally {
     if (connection) connection.release();

@@ -2,7 +2,12 @@
 
 const getDB = require("../../getDB");
 
-const insertFileInFolderQuery = async (name, idUser, idFolder) => {
+const insertFileInFolderQuery = async (
+  name,
+  originalName,
+  idUser,
+  idFolder
+) => {
   let connection;
 
   try {
@@ -10,13 +15,14 @@ const insertFileInFolderQuery = async (name, idUser, idFolder) => {
 
     const [file] = await connection.query(
       ` 
-      INSERT INTO files (name, idUser, idFolder) VALUES (?, ?, ?) `,
-      [name, idUser, idFolder]
+      INSERT INTO files (name, originalName, idUser, idFolder) VALUES (?, ?, ?, ?) `,
+      [name, originalName, idUser, idFolder]
     );
 
     return {
       id: file.insertId,
       name,
+      originalName,
       idUser,
       idFolder,
     };

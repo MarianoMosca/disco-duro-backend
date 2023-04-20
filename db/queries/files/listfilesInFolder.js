@@ -10,13 +10,14 @@ const listFilesInFolder = async (idFolder, idUser) => {
 
     const [files] = await connection.query(
       ` 
-      SELECT originalName FROM files where idFolder = ? AND idUser = ?`,
+       SELECT F.*, U.name AS user
+      FROM files F
+      INNER JOIN users U ON U.id = F.idUser 
+      WHERE F.idFolder = ? AND F.idUser = ?`,
       [idFolder, idUser]
     );
 
-    return {
-      files: files,
-    };
+    return files;
   } finally {
     if (connection) connection.release();
   }

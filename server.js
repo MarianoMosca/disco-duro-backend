@@ -55,7 +55,7 @@ const {
 
 app.post("/files", isAuth, newFile);
 
-app.post("/folders/:idFolders", isAuth, newFileInFolder);
+app.post("/folders/:idFolders", isAuth, newFile);
 
 app.get("/folders/:idFolder/files", isAuth, getFilesInFolder);
 
@@ -76,10 +76,13 @@ const {
   deleteFolder,
   listFolders,
 } = require("./controllers/folders");
+const listFolder = require("./controllers/folders/listFolder");
 
 app.post("/folders", isAuth, newFolder);
 
 app.get("/folders", isAuth, listFolders);
+
+app.get("/folders/:id", isAuth, listFolder);
 
 app.delete("/users/:idUser/folders/:idFolder", isAuth, deleteFolder);
 

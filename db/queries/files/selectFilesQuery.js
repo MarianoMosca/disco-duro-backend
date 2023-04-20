@@ -13,7 +13,7 @@ const selectFilesQuery = async (idUser) => {
     SELECT F.*, U.name AS user
     FROM files F
     INNER JOIN users U ON U.id = F.idUser
-    WHERE idUser = ?
+    WHERE idUser = ? AND idFolder IS NULL
     `,
       [idUser]
     );

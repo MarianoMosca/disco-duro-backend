@@ -1,5 +1,7 @@
 "use strict";
 
+// POSIBLEMENTE BORREMOS ESTE CONTROLADOR Y UTILICEMOS SOLO NEWFILE.JS
+
 const insertFileInFolderQuery = require("../../db/queries/files/insertFileInFolderQuery");
 
 const { generateError, saveFile } = require("../../utils/helpers");

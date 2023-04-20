@@ -10,8 +10,10 @@ const newFile = async (req, res, next) => {
     const idUser = req.user.id;
 
     const originalName = req.body.originalName;
+    console.log(originalName);
 
     const idFolder = req.body.idFolder;
+    console.log(req.body); // Undefined
 
     if (!req.files?.file || !originalName) {
       generateError("Faltan campos", 400);
