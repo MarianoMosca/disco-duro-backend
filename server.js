@@ -49,7 +49,6 @@ const {
   newFile,
   deleteFile,
   listFiles,
-  newFileInFolder,
   getFilesInFolder,
 } = require("./controllers/files");
 
