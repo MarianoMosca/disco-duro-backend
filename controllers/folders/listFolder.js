@@ -7,8 +7,6 @@ const listFolder = async (req, res, next) => {
     const { id } = req.params;
     const folder = await selectFolderQuery(req.user.id, id);
 
-    console.log(folder);
-
     res.send({
       status: "ok",
       data: folder,
