@@ -13,7 +13,7 @@ const newFolder = async (req, res, next) => {
     }
 
     const idFolder = await insertFolderQuery(name, req.user.id);
-    console.log(res);
+
     let files = [];
 
     if (req.files) {
