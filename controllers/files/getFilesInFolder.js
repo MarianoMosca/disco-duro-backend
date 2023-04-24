@@ -8,7 +8,7 @@ const getFilesInFolder = async (req, res, next) => {
 
     const idFolder = req.params.idFolder;
     const files = await listFilesInFolder(idFolder, idUser);
-
+    console.log("FILES:", files);
     res.send({
       status: "ok",
       data: files,

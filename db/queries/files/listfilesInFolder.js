@@ -16,7 +16,7 @@ const listFilesInFolder = async (idFolder, idUser) => {
       WHERE F.idFolder = ? AND F.idUser = ?`,
       [idFolder, idUser]
     );
-
+    console.log("aaaaaa: ", files);
     return files;
   } finally {
     if (connection) connection.release();
