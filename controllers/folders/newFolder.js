@@ -24,18 +24,16 @@ const newFolder = async (req, res, next) => {
         await insertFileQuery(file.name, fileName, idFolder, req.user.id);
       }
     }
-
+    const data = {
+      id: idFolder,
+      name,
+      idUser: req.user.id,
+      createdAt: new Date(),
+      files,
+    };
     res.send({
       status: "Ok",
-
-      //lo siguiente es un poco chapuza, deberíamos seleccionar de la base de datos la carpeta de la misma forma que la seleccionamos en outros endpoints
-      data: {
-        files,
-        id: idFolder,
-        name,
-        idUser: req.user.id,
-        createdAt: new Date(),
-      },
+      data,
     });
   } catch (err) {
     next(err);
