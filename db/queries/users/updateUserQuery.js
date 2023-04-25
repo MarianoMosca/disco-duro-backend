@@ -2,6 +2,7 @@
 
 const { generateError } = require("../../../utils/helpers");
 const getDB = require("../../getDB");
+const selectUserByIdQuery = require("./selectUserByIdQuery");
 
 const updateUserQuery = async (name, email, idUser) => {
   let connection;
@@ -15,7 +16,7 @@ const updateUserQuery = async (name, email, idUser) => {
       `,
         [name]
       );
-      if (users.length > 0) {
+      if (users.length > 0 && users[0].id !== idUser) {
         generateError("Nombre de usuario no disponible", 403);
       }
 
@@ -34,7 +35,7 @@ const updateUserQuery = async (name, email, idUser) => {
       `,
         [email]
       );
-      if (users.length > 0) {
+      if (users.length > 0 && users[0].id !== idUser) {
         generateError("El email ya esta ocupado", 403);
       }
 
@@ -45,6 +46,9 @@ const updateUserQuery = async (name, email, idUser) => {
         [email, idUser]
       );
     }
+    const updatedUser = await selectUserByIdQuery(idUser);
+
+    return updatedUser;
   } finally {
     if (connection) connection.release();
   }
