@@ -1,6 +1,7 @@
 "use strict";
 
 const getDB = require("../../getDB");
+const selectUserByIdQuery = require("./selectUserByIdQuery");
 
 const updateAvatarUserQuery = async (avatar, idUser) => {
   let connection;
@@ -14,6 +15,9 @@ const updateAvatarUserQuery = async (avatar, idUser) => {
     `,
       [avatar, idUser]
     );
+    const updatedUser = await selectUserByIdQuery(idUser);
+
+    return updatedUser;
   } finally {
     if (connection) connection.release();
   }
